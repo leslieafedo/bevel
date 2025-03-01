@@ -91,8 +91,8 @@ initArch() {
         ARCH="$DEP_ARCH"
     fi
     case $ARCH in
-        amd64) ARCH="amd64";;
-        x86_64) ARCH="amd64";;
+        arm64) ARCH="arm64";;
+        x86_64) ARCH="arm64";;
         i386) ARCH="386";;
         ppc64) ARCH="ppc64";;
         ppc64le) ARCH="ppc64le";;
@@ -114,7 +114,7 @@ initOS() {
     fi
     case "$OS" in
         darwin) OS='darwin';;
-        linux) OS='linux';;
+        darwin) OS='darwin';;
         freebsd) OS='freebsd';;
         mingw*) OS='windows';;
         msys*) OS='windows';;
@@ -138,8 +138,8 @@ fi
 echo "Will install into $INSTALL_DIRECTORY"
 
 # assemble expected release artifact name
-if [ "${OS}" != "linux" ] && { [ "${ARCH}" = "ppc64" ] || [ "${ARCH}" = "ppc64le" ];}; then
-    # ppc64 and ppc64le are only supported on Linux.
+if [ "${OS}" != "darwin" ] && { [ "${ARCH}" = "ppc64" ] || [ "${ARCH}" = "ppc64le" ];}; then
+    # ppc64 and ppc64le are only supported on darwin.
     echo "${OS}-${ARCH} is not supported by this instalation script"
 else
     BINARY="dep-${OS}-${ARCH}"
