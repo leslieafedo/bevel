@@ -22,11 +22,11 @@ spec:
       cluster:
         provider: gcp
         cloudNativeServices: false
-        kubernetesUrl: https://34.59.6.97
+        kubernetesUrl: https://34.58.205.53
       vault:
         type: hashicorp
         network: fabric
-        address: http://104.197.75.133:8200"
+        address: http://34.66.195.238:8200"
         authPath: localsupplychain
         secretEngine: secretsv2
         secretPrefix: "data/localsupplychain"
