@@ -43,6 +43,6 @@
         state: absent
   vars: #These variables can be overriden from the command line
     privilege_escalate: false           #Default to NOT escalate to root privledges
-    install_os: "linux"                 #Default to linux OS
-    install_arch:  "amd64"              #Default to amd64 architecture
-    bin_install_dir:  "~/bin"            #Default to /bin install directory for binaries
+    install_os: "darwin"                 #Default to linux OS
+    install_arch:  "arm64"              #Default to amd64 architecture
+    bin_install_dir:  "/usr/local/bin"            #Default to /bin install directory for binaries
