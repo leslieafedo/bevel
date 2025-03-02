@@ -9,20 +9,20 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Function to determine the Linux distribution
-get_linux_distro() {
-    if [ "$(uname -s)" = "Linux" ]; then
+# Function to determine the darwin distribution
+get_darwin_distro() {
+    if [ "$(uname -s)" = "darwin" ]; then
         if command_exists lsb_release; then
             DISTRO=$(lsb_release -si | tr '[:upper:]' '[:lower:]')
         elif [ -f "/etc/os-release" ]; then
             . /etc/os-release
             DISTRO=$(echo "$ID" | tr '[:upper:]' '[:lower:]')
         else
-            echo "Unable to determine the Linux distribution."
+            echo "Unable to determine the darwin distribution."
             exit 1
         fi
     else
-        echo "This is not a Linux system."
+        echo "This is not a darwin system."
         exit 1
     fi
 }
@@ -40,7 +40,7 @@ get_package_manager() {
         PACKAGE_MNG="yum"
         ;;
     *)
-        echo "Unsupported Linux distribution: $DISTRO"
+        echo "Unsupported darwin distribution: $DISTRO"
         exit 1
         ;;
     esac
@@ -48,8 +48,8 @@ get_package_manager() {
 
 # Function to install packages using the detected package manager
 install_packages() {
-    # Invoking function to determine the Linux distribution
-    get_linux_distro
+    # Invoking function to determine the darwin distribution
+    get_darwin_distro
     # Invoking function to determine the package manager based on the distribution
     get_package_manager
 

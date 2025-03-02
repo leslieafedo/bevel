@@ -16,7 +16,7 @@ REM If not present, then exit
 :: BatchGotAdmin
 :-------------------------------------
 REM  --> Check for permissions
-    IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
+    IF "%PROCESSOR_ARCHITECTURE%" EQU "arm64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) ELSE (
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
@@ -252,7 +252,7 @@ echo.
 vault --version
 set VAULTVAR=%errorlevel%
 if %VAULTVAR%==9009 (
-powershell -Command "Invoke-WebRequest https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_windows_amd64.zip -OutFile vault.zip"
+powershell -Command "Invoke-WebRequest https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_windows_arm64.zip -OutFile vault.zip"
 if %ERRORLEVEL%==1 (
 echo Bad internet/url. Exiting...
 PAUSE
@@ -307,7 +307,7 @@ minikube status
 set MINIKUBEVAR=%errorlevel%
 if %VIRTUALBOXVAR% NEQ 9009 if %VIRTUALBOXVAR% NEQ 3 (
   if %MINIKUBEVAR%==9009 (
-  powershell -Command "Invoke-WebRequest https://github.com/kubernetes/minikube/releases/download/v1.27.1/minikube-windows-amd64.exe -OutFile minikube.exe"
+  powershell -Command "Invoke-WebRequest https://github.com/kubernetes/minikube/releases/download/v1.27.1/minikube-windows-arm64.exe -OutFile minikube.exe"
 	if %ERRORLEVEL%==1 (
 	echo Bad internet/url. Exiting...
 	PAUSE

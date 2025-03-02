@@ -126,7 +126,7 @@ if [[ $? == 0 ]]; then
 fi
 if [[ $? != 0 || -z ${vault_version} ]]; then
     echo "Starting Vault to download..."
-    curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_darwin_amd64.zip -o ./vault.zip
+    curl https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_darwin_arm64.zip -o ./vault.zip
     ls -la | grep "vault.zip" > /dev/null 2>&1
     check "Vault downloading"
     echo "Starting Vault to install..."
@@ -186,7 +186,7 @@ fi
 minikube version  > /dev/null 2>&1
 if [[ $? != 0 ]]; then
     echo "Starting Minikube to download..."
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-arm64
     chmod +x minikube
     ls -la | grep "minikube"  > /dev/null 2>&1
     check "Minikube downloading"

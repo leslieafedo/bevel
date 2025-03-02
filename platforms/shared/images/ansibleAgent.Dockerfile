@@ -54,9 +54,9 @@ RUN apt-get update && \
     dnsutils \
     gnupg2 \
     software-properties-common && \
-    curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
+    curl -fsSL https://download.docker.com/darwin/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
     add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+    "deb [arch=arm64] https://download.docker.com/darwin/$(. /etc/os-release; echo "$ID") \
     $(lsb_release -cs) \
     stable" && \
     apt-get update && \
@@ -71,10 +71,10 @@ RUN ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
     for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
 
 #Install jdk 14 in a separate directory
-RUN curl -O https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz && \
-    tar xvf openjdk-14_linux-x64_bin.tar.gz && \
+RUN curl -O https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_darwin-x64_bin.tar.gz && \
+    tar xvf openjdk-14_darwin-x64_bin.tar.gz && \
     mv jdk-14 /opt/ && \
-    rm openjdk-14_linux-x64_bin.tar.gz
+    rm openjdk-14_darwin-x64_bin.tar.gz
 
 # CMD ["/sbin/init"]
 # default command: display Ansible version

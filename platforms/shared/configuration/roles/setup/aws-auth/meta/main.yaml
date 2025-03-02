@@ -11,7 +11,7 @@ galaxy_info:
   license: apache2
   min_ansible_version: 2.7
   platforms:
-    - name: linux
+    - name: darwin
       versions:
        - all
     - name: darwin

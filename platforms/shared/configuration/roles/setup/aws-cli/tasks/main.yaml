@@ -19,7 +19,7 @@
 
   - name: download aws cli
     get_url:
-      url: "https://awscli.amazonaws.com/awscli-exe-linux-{{ aws_cli.install_arch }}.zip"
+      url: "https://awscli.amazonaws.com/awscli-exe-darwin-{{ aws_cli.install_arch }}.zip"
       dest: "{{ tmp_directory.path }}"
       checksum: ""
     when: not aws_cli_stat_result.stat.exists
@@ -28,7 +28,7 @@
 
   - name: extract aws cli
     unarchive:
-      src: "{{ tmp_directory.path }}/awscli-exe-linux-{{ aws_cli.install_arch }}.zip"
+      src: "{{ tmp_directory.path }}/awscli-exe-darwin-{{ aws_cli.install_arch }}.zip"
       dest: "{{ tmp_directory.path }}"
       remote_src: yes
     when: not aws_cli_stat_result.stat.exists
